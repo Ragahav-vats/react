@@ -1,0 +1,14 @@
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import Home from './Home'
+import './assets/css/style.css'
+
+
+
+
+createRoot(document.getElementById('root')).render(
+  <>
+    <Home tagName="Form"/>
+    
+  </>,
+)
