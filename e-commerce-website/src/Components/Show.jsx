@@ -10,7 +10,7 @@ export default function Show({items,type}) {
                 <Card className='mb-3'>
                     <Card.Img variant="top" src={items.image} />
                     <Card.Body className='text-center'>
-                        <Card.Title>{items.title}</Card.Title>
+                        <Card.Title>{items.name}</Card.Title>
                         <h4>Rs {items.price}</h4>
                         <Card.Text>
                             {items.description}

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container } from 'react-bootstrap';
+import { Container, ToastContainer } from 'react-bootstrap';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
@@ -8,6 +8,7 @@ import logo from '../assets/images/ws-cube-white-logo.svg'
 export default function Heading() {
     return (
         <>
+        <ToastContainer/>
             <div className='container-flood'>
                     <Navbar expand="lg" className="bg-primary">
                         <Container>

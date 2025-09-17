@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react'
-import Show from './Show';
+
 import axios from 'axios';
+import Show from './Show';
 
 
-export default function Product({items}) {
-const [showImages, setShowImages] = useState([1,2,3,4,5,6,7,8])
+export default function Product() {
+const [showImages, setShowImages] = useState([])
 
 useEffect(()=>{
-    axios.get('https://dummyjson.com/products?limit=12')
+    axios.get('https://wscubetech.co/ecommerce-api/products.php?limit=12')
     .then((result) =>{
-       setShowImages(result.data.products)
+       setShowImages(result.data.data)
+       console.log(result.data.data)
     })
     .catch(() =>{
          toast.error('something went wrong !')
@@ -28,7 +30,7 @@ useEffect(()=>{
                               {
                                   showImages.map((items,index) =>{
                                     return(
-                                     <Show key={index} items={items} type='2'/> 
+                                    <Show key={index} items={items} type='2'/>  
                                   )
                                   
                               })
