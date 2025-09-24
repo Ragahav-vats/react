@@ -11,7 +11,7 @@ import BestSelling from './BestSelling'
 export default function Home() {
   return (
     <>
-      <Heading/>
+      
       <Card/>
       <Product/>
       <BestSelling/>

@@ -16,7 +16,7 @@ export default function ProductShoping() {
   const [priceFrom, setPriceFrom] = useState('');
   const [priceTo, setPriceTo] = useState('');
   const [sorting, setSorting] = useState('');
-  const [currentPage, setCurrentPage] = useState(5);
+  const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
 
 
@@ -31,12 +31,10 @@ export default function ProductShoping() {
         price_from: priceFrom,
         price_to: priceTo,
         sorting: sorting,
-        categories: filterCategories,
-        brands: filterBrands
+        categories: filterCategories.toString(),
+        brands: filterBrands.toString(),
       },
-      paramsSerializer: (params)=>{
-        return new URLSearchParams(params).toString();
-      }
+      
       })
       .then((result) => {
         setShowImages(result.data.data);
@@ -51,7 +49,7 @@ export default function ProductShoping() {
   useEffect(() => {
     axios.get('https://wscubetech.co/ecommerce-api/categories.php')
       .then((result) => {
-        setCategories(result.data.data)
+        setCategories(result.data.data);
       })
       .catch(() => {
         toast.error('something went wrong !')
@@ -61,7 +59,7 @@ export default function ProductShoping() {
   useEffect(() => {
     axios.get('https://wscubetech.co/ecommerce-api/brands.php')
       .then((result) => {
-        setBrands(result.data.data)
+        setBrands(result.data.data);
       })
       .catch(() => {
         toast.error('something went wrong !')
@@ -77,11 +75,13 @@ export default function ProductShoping() {
         }
 
       })
-      setFilterCategories(Data)
+      setFilterCategories(Data);
+      console.log(Data);
     
     } else {
       const Data = [...filterCategories, slug];
       setFilterCategories(Data);
+      console.log(Data);
      
     }
   }
@@ -94,25 +94,25 @@ export default function ProductShoping() {
         }
 
       })
-      setFilterBrands(Data)
+      setFilterBrands(Data);
+      console.log(Data);
     } else {
       const Data = [...filterBrands, slug];
-      setFilterBrands(Data)
+      setFilterBrands(Data);
+      console.log(Data);
    
     }
   }
 
   const priceFilter = (from, to) => {
-    setPriceFrom(from)
-    setPriceTo(to)
+    setPriceFrom(from);
+    setPriceTo(to);
   }
   const filterSorting = (sort) => {
     setSorting(sort)
   }
   return (
     <>
-      <Heading />
-
       <div class="overlay d-none"></div>
       <div class="search-section">
         <div class="container-fluid container-xl">

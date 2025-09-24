@@ -18,7 +18,6 @@ useEffect(()=>{
     })
 },[]);
 
-
   return (
     <>
       <div className='container-fluid'>
@@ -30,7 +29,7 @@ useEffect(()=>{
                               {
                                   showImages.map((items,index) =>{
                                     return(
-                                    <Show key={index} items={items} type='2'/>  
+                                    <Show key={index} items={items} type='1'/>  
                                   )
                                   
                               })
