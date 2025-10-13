@@ -1,6 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { addToCart } from './Redux Toolkit/CartSlice';
+import { MenuItems } from '@headlessui/react';
 
 export default function ProductCard({item}) {
 
@@ -8,7 +9,7 @@ export default function ProductCard({item}) {
   return (
     <>
                                         <div class="w-72 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
-                                            <a href="#">
+                                            <a href={`/product-details/${item.id}`}>
                                                 <img src={item.image} alt="Product" class="h-80 w-72 object-cover rounded-t-xl" />
                                                 <div class="px-4 py-3 w-72">
                                                     <span class="text-gray-400 mr-3 uppercase text-xs">{item.category_name}</span>
