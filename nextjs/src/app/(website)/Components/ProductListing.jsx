@@ -20,6 +20,7 @@ import axios from 'axios'
 import { toast } from 'react-toastify'
 import ProductCard from './ProductCard'
 import ResponsivePagination from 'react-responsive-pagination';
+import { getCategories } from '../services/ApiServices'
 
 const sortOptions = [
     { name: 'Name (A-Z)', value: '1', current: false },
@@ -113,7 +114,7 @@ function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
-export default function ProductListing() {
+export default function ProductListing({category,brand}) {
     const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
     const [categories, setCategories] = useState([]);
     const [brands, setBrands] = useState([]);
@@ -132,27 +133,31 @@ export default function ProductListing() {
     const [filterBrands, setFilterBrands] = useState([]);
 
 
-      
+      useEffect (() =>{
+        setCategories(category);
+        setBrands(category);
+        console.log(category);
+      }, [])
 
-  useEffect(() => {
-    axios.get('https://wscubetech.co/ecommerce-api/categories.php')
-      .then((result) => {
-        setCategories(result.data.data);
-      })
-      .catch(() => {
-        toast.error('something went wrong !')
-      })
-  }, [])
+//   useEffect(() => {
+//     axios.get('https://wscubetech.co/ecommerce-api/categories.php')
+//       .then((result) => {
+//         setCategories(result.data.data);
+//       })
+//       .catch(() => {
+//         toast.error('something went wrong !')
+//       })
+//   }, [])
 
-  useEffect(() => {
-    axios.get('https://wscubetech.co/ecommerce-api/brands.php')
-      .then((result) => {
-        setBrands(result.data.data);
-      })
-      .catch(() => {
-        toast.error('something went wrong !')
-      })
-  }, [])
+//   useEffect(() => {
+//     axios.get('https://wscubetech.co/ecommerce-api/brands.php')
+//       .then((result) => {
+//         setBrands(result.data.data);
+//       })
+//       .catch(() => {
+//         toast.error('something went wrong !')
+//       })
+//   }, [])
 
   useEffect(() => {
     axios.get("https://wscubetech.co/ecommerce-api/products.php",{
